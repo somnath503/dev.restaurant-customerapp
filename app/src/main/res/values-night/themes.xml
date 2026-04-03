@@ -1,0 +1,24 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application dark theme. -->
+    <style name="Theme.Customer_app" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary colors remain warm but slightly muted -->
+        <item name="colorPrimary">@color/food_orange_night</item>
+        <item name="colorPrimaryVariant">@color/food_orange_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <!-- Secondary colors -->
+        <item name="colorSecondary">@color/fresh_green_night</item>
+        <item name="colorSecondaryVariant">@color/fresh_green_dark</item>
+        <item name="colorOnSecondary">@color/white</item>
+
+        <!-- Dark backgrounds -->
+        <item name="android:colorBackground">@color/background_dark</item>
+        <item name="colorSurface">@color/surface_dark</item>
+        <item name="colorOnSurface">@color/text_light</item>
+        <item name="colorOnBackground">@color/text_light</item>
+
+        <!-- Status bar for dark theme -->
+        <item name="android:statusBarColor" tools:targetApi="l">@color/background_dark</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+    </style>
+</resources>

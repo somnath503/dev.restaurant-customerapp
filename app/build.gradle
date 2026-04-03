@@ -1,0 +1,97 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    signingConfigs {
+        debug {
+            storeFile file('C:\\Users\\somna\\Documents\\industri_project\\Admin_Panel_Rita\\ritapass.jks')
+            storePassword 'rita2025'
+            keyAlias 'key0'
+            keyPassword 'rita2025'
+        }
+    }
+    namespace 'com.somnath.customer_app'
+    compileSdk 35// Keep at 34 as it's a recent stable version
+
+    defaultConfig {
+        applicationId "com.somnath.customer_app"
+        minSdk 29
+        targetSdk 35 // FIXED: Align targetSdk with compileSdk to avoid issues
+        versionCode 6
+        versionName "2.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    buildFeatures {
+        viewBinding true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8 // Explicitly enable Java 8 language features
+        targetCompatibility JavaVersion.VERSION_1_8 // Explicitly enable Java 8 language features
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.2.0'
+
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.activity:activity:1.8.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0' // Often needed for older fragments/components
+    implementation 'jp.wasabeef:glide-transformations:4.3.0'
+
+    // Material Design Library (FIXED: Keep only the latest version)
+    implementation 'com.google.android.material:material:1.12.0' // Use 1.12.0 as it's higher than 1.9.0
+
+    // Retrofit & OkHttp for Networking
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.10.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.10.0'
+
+    // Glide for Image Loading
+    implementation 'com.github.bumptech.glide:glide:4.16.0' // Using latest stable version
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.16.0' // Using latest stable version
+
+    // Android Architecture Components (Lifecycle)
+    implementation 'androidx.lifecycle:lifecycle-viewmodel:2.6.2'
+    implementation 'androidx.lifecycle:lifecycle-livedata:2.6.2'
+    implementation 'androidx.lifecycle:lifecycle-common-java8:2.6.2'
+    // Note: lifecycle-extensions is deprecated for ViewModel/LiveData 2.x+, often causes issues.
+    // If you encounter specific problems related to it, you might need to remove it later if not strictly necessary.
+    // For now, let's keep it if your app relies on older APIs it provides.
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0' // Keeping existing, but consider removing if issues persist.
+
+    // Google Play Services for Location
+    implementation 'com.google.android.gms:play-services-location:21.0.1'
+
+    // Razorpay (Payment Gateway)
+    implementation 'com.razorpay:checkout:1.6.33'
+
+    // Android Security Crypto (For SharedPreferences encryption etc.)
+    implementation 'androidx.security:security-crypto:1.1.0-alpha06'
+
+    // CircleImageView Library (FIXED: Added this missing dependency)
+    implementation 'de.hdodenhof:circleimageview:3.1.0' // This line is crucial for civ_ attributes
+
+    // For ViewPager2 (already in your code, but explicitly listing here for completeness)
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+
+    // Testing Libraries
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    implementation 'com.google.android.gms:play-services-location:21.2.0'
+
+}

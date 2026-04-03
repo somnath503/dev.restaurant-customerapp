@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/registration_coordinator_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_gray"
+    tools:context=".activities.RegistrationActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ProgressBar
+                android:id="@+id/progress_bar_registration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <androidx.cardview.widget.CardView
+                style="@style/AuthCardViewStyle"
+                app:cardBackgroundColor="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+
+                    <TextView
+                        android:id="@+id/tv_registration_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="Create Your Account"
+                        android:textColor="@color/text_primary_dark"
+                        android:textSize="28sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_registration_message"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="8dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="16sp"
+                        tools:text="Enter your phone number to begin." />
+
+                    <LinearLayout
+                        android:id="@+id/ll_phone_input_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="32dp"
+                        android:visibility="visible">
+
+                        <EditText
+                            android:id="@+id/et_phone_number_reg"
+                            style="@style/AuthEditTextStyle"
+                            android:hint="10-Digit Mobile Number"
+                            android:inputType="phone"
+                            android:maxLength="13" />
+
+                        <Button
+                            android:id="@+id/btn_send_otp_reg"
+                            style="@style/AuthButtonStyle"
+                            android:layout_marginTop="16dp"
+                            android:text="Send OTP" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_otp_input_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="32dp"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <EditText
+                            android:id="@+id/et_otp_reg"
+                            style="@style/AuthEditTextStyle"
+                            android:hint="6-Digit OTP"
+                            android:inputType="number"
+                            android:letterSpacing="0.2"
+                            android:maxLength="6"
+                            android:textAlignment="center"/>
+
+                        <Button
+                            android:id="@+id/btn_verify_otp_reg"
+                            style="@style/AuthButtonStyle"
+                            android:layout_marginTop="16dp"
+                            android:text="Verify OTP" />
+
+                        <TextView
+                            android:id="@+id/tv_resend_otp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="8dp"
+                            android:padding="8dp"
+                            android:text="Resend OTP"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="16sp"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_details_input_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="32dp"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <EditText
+                            android:id="@+id/et_name"
+                            style="@style/AuthEditTextStyle"
+                            android:autofillHints="name"
+                            android:hint="Full Name"
+                            android:inputType="textPersonName|textCapWords" />
+
+                        <EditText
+                            android:id="@+id/et_address"
+                            style="@style/AuthEditTextStyle"
+                            android:layout_marginTop="16dp"
+                            android:autofillHints="postalAddress"
+                            android:focusable="false"
+                            android:hint="Your Delivery Address"
+                            tools:text="123 Main Street, Anytown" />
+
+                        <Button
+                            android:id="@+id/btn_use_current_location"
+                            style="@style/AuthButtonStyle"
+                            android:layout_marginTop="16dp"
+                            android:text="Use Current Location"
+                            app:icon="@drawable/ic_location"
+                            app:iconGravity="textStart"
+                            app:iconPadding="8dp" />
+
+                        <CheckBox
+                            android:id="@+id/cb_privacy_policy"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="24dp"
+                            android:textColor="@color/dark_gray"
+                            tools:text="I agree to the Privacy Policy"
+                            />
+
+                        <Button
+                            android:id="@+id/btn_complete_registration"
+                            style="@style/AuthButtonStyle"
+                            android:layout_marginTop="16dp"
+                            android:text="Save &amp; Continue" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
+    </ScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

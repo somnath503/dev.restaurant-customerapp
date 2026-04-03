@@ -1,0 +1,44 @@
+<!-- PATH: app/src/main/res/layout/nav_header.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <!--
+        Naming Convention:
+        - ImageView is now 'imageViewNavHeaderLogo' for clarity.
+        - Size is increased for better visual presence.
+    -->
+    <ImageView
+        android:id="@+id/imageViewNavHeaderLogo"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:contentDescription="@string/restaurant_logo_desc"
+        app:srcCompat="@drawable/ic_app_logo" /> <!-- Suggest using a custom drawable -->
+
+    <!--
+        Naming Convention:
+        - TextView is now 'textViewNavHeaderName'
+        - Increased top margin for better spacing.
+        - Using a more prominent text appearance.
+    -->
+    <TextView
+        android:id="@+id/textViewNavHeaderName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/app_name"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+        android:textColor="@color/white"
+        android:textStyle="bold"/>
+
+    <!--
+        REMOVED: The "Loading Address..." TextView has been completely removed
+        as per your request. The address will now only be shown in the main toolbar.
+    -->
+
+</LinearLayout>

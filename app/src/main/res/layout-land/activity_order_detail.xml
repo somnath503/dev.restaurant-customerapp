@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.OrderDetailActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:title="Your Order Details"
+    app:navigationIcon="@drawable/ic_arrow_back"
+    app:titleTextColor="@android:color/white"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
+        android:layout_above="@+id/btn_see_in_menu">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Order Date and Time -->
+            <TextView
+                android:id="@+id/tv_detail_order_date_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ordered on: Aug 16, 2025 at 12:30 PM"
+                android:textSize="16sp"
+                android:textColor="@color/text_primary_dark"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Section Header: Order Summary -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Order Items"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_primary_dark"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- RecyclerView for Order Items -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_order_items"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+            android:layout_marginTop="8dp"/>
+
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- Total Paid Amount -->
+            <TextView
+                android:id="@+id/tv_detail_total_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Paid: ₹0.00"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_primary_dark"
+                android:layout_gravity="end"
+                android:layout_marginTop="8dp"/>
+
+            <!-- Additional Details (Optional, add as needed) -->
+            <!-- <TextView
+                android:id="@+id/tv_detail_payment_method"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Payment Method: COD"
+                android:textSize="14sp"
+                android:layout_marginTop="4dp"/>
+
+            <TextView
+                android:id="@+id/tv_detail_delivery_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Delivery To: 123 Main St, City, Country"
+                android:textSize="14sp"
+                android:layout_marginTop="4dp"/> -->
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Button to See in Menu -->
+    <Button
+        android:id="@+id/btn_see_in_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="See in Menu"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16dp"
+        android:backgroundTint="?attr/colorPrimary"/> <!-- Use app primary color -->
+
+</RelativeLayout>

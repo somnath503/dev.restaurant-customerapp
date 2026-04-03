@@ -1,0 +1,81 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme inheriting from MaterialComponents -->
+    <style name="Theme.Customer_app" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/food_orange</item>
+        <item name="colorPrimaryVariant">@color/food_orange_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <item name="colorSecondary">@color/fresh_green</item>
+        <item name="colorSecondaryVariant">@color/fresh_green_dark</item>
+        <item name="colorOnSecondary">@color/white</item>
+
+        <item name="android:colorBackground">@color/background_light</item>
+        <item name="colorSurface">@color/white</item>
+        <item name="colorOnSurface">@color/text_dark</item>
+        <item name="colorOnBackground">@color/text_dark</item>
+
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+
+        <item name="colorError">@color/error_red</item>
+        <item name="colorOnError">@color/white</item>
+
+        <!-- Add these text appearance attributes -->
+        <item name="textAppearanceHeadline6">@style/TextAppearance.MaterialComponents.Headline6</item>
+        <item name="textAppearanceSubtitle1">@style/TextAppearance.MaterialComponents.Subtitle1</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.MaterialComponents.Body1</item>
+    </style>
+
+    <!-- No Action Bar Theme for splash and full screen activities -->
+    <style name="Theme.Customer_app.NoActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/food_orange</item>
+        <item name="colorPrimaryVariant">@color/food_orange_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <item name="colorSecondary">@color/fresh_green</item>
+        <item name="colorSecondaryVariant">@color/fresh_green_dark</item>
+        <item name="colorOnSecondary">@color/white</item>
+
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+    </style>
+
+    <!-- Toolbar overlays -->
+    <style name="Theme.Customer_app.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.Customer_app.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!-- Style for the authentication CardView -->
+    <style name="AuthCardViewStyle" parent="Widget.MaterialComponents.CardView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:layout_margin">24dp</item>
+        <item name="cardCornerRadius">16dp</item>
+        <item name="cardElevation">8dp</item>
+    </style>
+
+    <!-- Style for EditText fields -->
+    <style name="AuthEditTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/edit_text_background</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:textColor">@color/text_primary_dark</item>
+        <item name="android:textColorHint">@color/dark_gray</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <!-- Style for primary action buttons -->
+    <style name="AuthButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="backgroundTint">@color/colorPrimary</item>
+        <item name="cornerRadius">28dp</item>
+        <item name="android:minHeight">56dp</item>
+    </style>
+
+</resources>

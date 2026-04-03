@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginVertical="6dp"
+    app:cardBackgroundColor="@color/black"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp">
+
+        <!-- 1. IMAGE CONTAINER: This CardView creates the rounded background -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewImageContainer"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            app:cardCornerRadius="12dp"
+            app:cardBackgroundColor="#2C2C2C"
+            app:cardElevation="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <!-- 2. THE ACTUAL IMAGE VIEW -->
+            <ImageView
+                android:id="@+id/ivMenuItemImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:contentDescription="@string/menu_item_image_description"
+                tools:srcCompat="@drawable/placeholder_menu_item" />
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- 3. TEXT CONTENT -->
+        <TextView
+            android:id="@+id/tvMenuItemName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/cardViewImageContainer"
+            app:layout_constraintTop_toTopOf="@id/cardViewImageContainer"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Chilli Chicken (12 Pcs)" />
+
+        <TextView
+            android:id="@+id/tvMenuItemDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/grey"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@id/tvMenuItemName"
+            app:layout_constraintTop_toBottomOf="@id/tvMenuItemName"
+            app:layout_constraintEnd_toEndOf="@id/tvMenuItemName"
+            tools:text="Marinated fried chicken tossed in garlic, ginger, and chili sauce." />
+
+        <!-- 4. PRICE AND ACTION BUTTONS -->
+        <TextView
+            android:id="@+id/tvMenuItemPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/cardViewImageContainer"
+            app:layout_constraintStart_toStartOf="@id/tvMenuItemName"
+            tools:text="₹300.00" />
+
+        <Button
+            android:id="@+id/btnAddToCart"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="ADD"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:strokeColor="@color/red"
+            app:strokeWidth="1dp" />
+
+        <TextView
+            android:id="@+id/tvOutOfStock"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/out_of_stock_background"
+            android:gravity="center"
+            android:text="OUT OF STOCK"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="@id/btnAddToCart"
+            app:layout_constraintBottom_toBottomOf="@id/btnAddToCart"
+            app:layout_constraintStart_toStartOf="@id/btnAddToCart"
+            app:layout_constraintEnd_toEndOf="@id/btnAddToCart"
+            tools:visibility="visible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

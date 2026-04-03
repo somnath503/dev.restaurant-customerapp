@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!-- Background Color -->
+    <!-- A deep, semi-transparent red. The 'AA' prefix makes it ~66% opaque, -->
+    <!-- which allows the black background to subtly show through. -->
+    <solid android:color="#AAe53935" />
+
+    <!-- Rounded Corners -->
+    <!-- A corner radius of 8dp gives it a modern, soft look. -->
+    <corners android:radius="8dp" />
+
+    <!-- Border (Stroke) -->
+    <!-- A thin, slightly lighter red border helps define the shape -->
+    <!-- and adds a touch of polish. -->
+    <stroke
+        android:width="1dp"
+        android:color="#CCff5722" />
+
+</shape>

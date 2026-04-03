@@ -1,0 +1,206 @@
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".activities.MenuActivity"
+    tools:openDrawer="start">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinatorLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_dark">
+
+        <!-- Main Content Area -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include layout="@layout/custom_toolbar" />
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/nestedScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="80dp">
+
+                    <!-- Search Bar -->
+                    <EditText
+                        android:id="@+id/editTextSearchDishes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/bg_search_dark"
+                        android:drawableStart="@drawable/ic_search"
+                        android:drawablePadding="12dp"
+                        android:hint="@string/search_dishes_hint"
+                        android:inputType="text"
+                        android:padding="12dp"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/textColorSecondary"
+                        tools:ignore="Autofill" />
+
+                    <!-- Image Slider -->
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/viewPagerImageSlider"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_marginTop="16dp" />
+
+                    <!-- Slider Indicators -->
+                    <LinearLayout
+                        android:id="@+id/layoutSliderIndicators"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal" />
+
+                    <!-- Category Header -->
+                    <TextView
+                        android:id="@+id/textViewCategoryHeader"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginTop="24dp"
+                        android:text="@string/list_of_category"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <!-- Delivery Time -->
+                    <TextView
+                        android:id="@+id/textViewDeliveryTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginTop="4dp"
+                        android:drawableStart="@drawable/ic_time_estimate"
+                        android:drawablePadding="4dp"
+                        android:gravity="center_vertical"
+                        android:text="43-48 mins"
+                        android:textColor="@color/textColorSecondary"
+                        android:textSize="16sp" />
+
+                    <!-- Categories RecyclerView -->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerViewCategories"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:clipToPadding="false"
+                        android:nestedScrollingEnabled="false"
+                        android:paddingHorizontal="12dp"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        app:spanCount="3"
+                        tools:listitem="@layout/item_category" />
+
+                    <!-- Menu Items RecyclerView -->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerViewMenuItems"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:nestedScrollingEnabled="false"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:listitem="@layout/item_menu" />
+
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+
+        </LinearLayout>
+
+        <!-- Floating Cart Bar - MOVED INSIDE CoordinatorLayout -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardViewCart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_margin="16dp"
+            android:visibility="gone"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="8dp"
+            tools:visibility="visible">
+
+            <include layout="@layout/bottom_cart_bar" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardViewRestaurantClosed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_margin="16dp"
+            android:visibility="gone"
+            app:cardBackgroundColor="@color/light_red_background"
+            app:cardCornerRadius="8dp"
+            app:strokeColor="@color/deep_red_accent"
+            app:strokeWidth="1dp"
+            tools:visibility="visible">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <ImageButton
+                android:id="@+id/buttonCloseStatus"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Close message"
+                android:src="@android:drawable/ic_menu_close_clear_cancel"
+                app:tint="@color/deep_red_accent" />
+
+            <TextView
+                android:id="@+id/textViewClosedTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_toStartOf="@id/buttonCloseStatus"
+                android:text="Currently Closed"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/deep_red_accent" />
+
+            <TextView
+                android:id="@+id/textViewOpeningTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewClosedTitle"
+                android:layout_marginTop="8dp"
+                android:text="We are not accepting orders at this time."
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/text_primary_dark" /> <!-- Text color set to dark -->
+
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <!-- Navigation Drawer View -->
+<com.google.android.material.navigation.NavigationView
+android:id="@+id/navigationView"
+android:layout_width="wrap_content"
+android:layout_height="match_parent"
+android:layout_gravity="start"
+android:background="@color/navDrawerBackground"
+app:itemIconTint="@color/navDrawerIconTint"
+app:itemTextColor="@color/navDrawerText"
+app:menu="@menu/nav_menu" />
+
+    </androidx.drawerlayout.widget.DrawerLayout>
