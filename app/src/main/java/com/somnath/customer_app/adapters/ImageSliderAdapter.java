@@ -13,11 +13,8 @@ import com.somnath.customer_app.models.SliderImage;
 import java.util.List;
 
 public class ImageSliderAdapter extends RecyclerView.Adapter<ImageSliderAdapter.SliderViewHolder> {
-
-    // Rename to avoid confusion with single image URL strings later
     private List<SliderImage> sliderImageList;
     private String baseUrl;
-
     public ImageSliderAdapter(List<SliderImage> sliderImageList, String baseUrl) {
         this.sliderImageList = sliderImageList;
         this.baseUrl = baseUrl;
@@ -48,7 +45,6 @@ public class ImageSliderAdapter extends RecyclerView.Adapter<ImageSliderAdapter.
                 finalImageUrl = relativeImageUrl; // It's already an absolute URL
             } else if (baseUrl != null && !baseUrl.trim().isEmpty()) {
                 // Construct the full URL
-                // Basic concatenation, ensure slashes are handled correctly
                 String tempBase = baseUrl;
                 if (!tempBase.endsWith("/")) {
                     tempBase += "/";
@@ -75,11 +71,7 @@ public class ImageSliderAdapter extends RecyclerView.Adapter<ImageSliderAdapter.
             Log.w("ImageSliderAdapter", "Final image URL is null or empty for position: " + position);
             holder.imageView.setImageResource(R.drawable.error_restaurant);
         }
-
-        // Optional: Set a click listener
         holder.itemView.setOnClickListener(v -> {
-            // Handle click using currentSliderItem
-            // e.g., Toast.makeText(holder.itemView.getContext(), "Clicked: " + currentSliderItem.getTitle(), Toast.LENGTH_SHORT).show();
         });
     }
 
@@ -87,8 +79,6 @@ public class ImageSliderAdapter extends RecyclerView.Adapter<ImageSliderAdapter.
     public int getItemCount() {
         return sliderImageList != null ? sliderImageList.size() : 0;
     }
-
-    // Method to update data
     public void updateData(List<SliderImage> newSliderImageList, String newBaseUrl) {
         this.sliderImageList = newSliderImageList;
         this.baseUrl = newBaseUrl; // In case the base URL could also change
@@ -100,7 +90,7 @@ public class ImageSliderAdapter extends RecyclerView.Adapter<ImageSliderAdapter.
 
         public SliderViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.iv_slider_image); // Ensure this ID is in item_image_slider.xml
+            imageView = itemView.findViewById(R.id.iv_slider_image);
         }
     }
 }

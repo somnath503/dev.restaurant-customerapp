@@ -20,13 +20,12 @@ public class Restaurant implements Parcelable {
     private String phone;
     private String description;
     @SerializedName("open")
-    private boolean isOpen; // Field name can be isOpen for clarity
+    private boolean isOpen;
 
     @SerializedName("openingTime")
     private String openingTime;
     @SerializedName("deliveryTime")
     private String deliveryTime;
-    // Your existing constructor
     public Restaurant(Long id, String name, String cuisine, String rating, String imageUrl, String deliveryTime,
                       String deliveryFee, String address, String phone, String description
     , boolean isOpen, String openingTime) {
@@ -59,8 +58,6 @@ public class Restaurant implements Parcelable {
     public void setOpeningTime(String openingTime) {
         this.openingTime = openingTime;
     }
-
-    // --- PARCELABLE IMPLEMENTATION ---
     protected Restaurant(Parcel in) {
         if (in.readByte() == 0) {
             id = null;
@@ -113,9 +110,6 @@ public class Restaurant implements Parcelable {
         dest.writeString(phone);
         dest.writeString(description);
     }
-    // --- END OF PARCELABLE IMPLEMENTATION ---
-
-    // Your existing getters and setters remain here...
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
     public String getName() { return name; }

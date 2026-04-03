@@ -40,11 +40,11 @@ public class ProfileActivity extends AppCompatActivity {
 
     private AuthViewModel authViewModel;
     private EditText etName, etEmail, etAddress, etBackupPhone;
-    private TextView tvPhoneNumber, tvProfileTitle; // UPDATED
+    private TextView tvPhoneNumber, tvProfileTitle;
     private Button btnSaveProfile, btnUseCurrentLocation;
     private ProgressBar progressBar;
     private TextView tvMessage;
-    private ImageView ivBackArrow; // ADDED
+    private ImageView ivBackArrow;
 
     private FusedLocationProviderClient fusedLocationClient;
 
@@ -76,7 +76,6 @@ public class ProfileActivity extends AppCompatActivity {
     private void initUI() {
         ivBackArrow = findViewById(R.id.iv_back_arrow);
         tvProfileTitle = findViewById(R.id.tv_profile_title);
-
         tvPhoneNumber = findViewById(R.id.tv_profile_phone_number);
         etName = findViewById(R.id.et_profile_name);
         etEmail = findViewById(R.id.et_profile_email);
@@ -89,9 +88,8 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void setupListeners() {
-        // ADDED listener for the back arrow
+        // listener for the back arrow
         ivBackArrow.setOnClickListener(v -> finish());
-
         btnSaveProfile.setOnClickListener(v -> saveProfile());
         btnUseCurrentLocation.setOnClickListener(v -> checkLocationPermissionsAndGetAddress());
     }
@@ -134,9 +132,8 @@ public class ProfileActivity extends AppCompatActivity {
         if (user.getName() != null && !user.getName().isEmpty()) {
             tvProfileTitle.setText(user.getName());
         } else {
-            tvProfileTitle.setText("Your Profile"); // Fallback text
+            tvProfileTitle.setText("Your Profile"); // Fallback t
         }
-
         tvPhoneNumber.setText(user.getPhone());
         etName.setText(user.getName());
         etEmail.setText(user.getEmail());
@@ -146,16 +143,13 @@ public class ProfileActivity extends AppCompatActivity {
         currentLatitude = user.getLatitude();
         currentLongitude = user.getLongitude();
     }
-
     private void saveProfile() {
         if (currentUserProfile == null) {
             showMessage("Profile data not loaded yet. Please wait.", true);
             return;
         }
-
         String newAddress = etAddress.getText().toString().trim();
         String backupPhone = etBackupPhone.getText().toString().trim();
-
         if (newAddress.isEmpty()) {
             etAddress.setError("Address cannot be empty.");
             showMessage("Address is required.", true);
@@ -171,7 +165,6 @@ public class ProfileActivity extends AppCompatActivity {
 
         authViewModel.updateUserProfile(currentUserProfile.getName(), currentUserProfile.getEmail(), newAddress, finalBackupPhone, currentLatitude, currentLongitude);
     }
-
     private void checkLocationPermissionsAndGetAddress() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this,
@@ -193,7 +186,6 @@ public class ProfileActivity extends AppCompatActivity {
             }
         }
     }
-
     private void getCurrentLocationAddress() {
         showMessage("Fetching current location...", false);
         setUiEnabled(false);

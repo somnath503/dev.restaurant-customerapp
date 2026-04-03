@@ -17,7 +17,6 @@ import java.util.List;
 import java.util.Map;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder> {
-
     private List<String> categoryList = new ArrayList<>();
     private Map<String, String> categoryImages = new HashMap<>();
     private OnCategoryClickListener listener;

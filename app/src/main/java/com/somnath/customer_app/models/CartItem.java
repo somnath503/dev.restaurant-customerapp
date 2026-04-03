@@ -1,12 +1,10 @@
-// app/src/main/java/com/somnath/customer_app/models/CartItem.java
 package com.somnath.customer_app.models;
 
 public class CartItem {
-    private MenuItem menuItem; // The actual menu item object
+    private MenuItem menuItem;
     private int quantity;
-    private Long restaurantId; // To ensure all items in cart are from the same restaurant
+    private Long restaurantId;
 
-    // Constructor
     public CartItem(MenuItem menuItem, int quantity, Long restaurantId) {
         this.menuItem = menuItem;
         this.quantity = quantity;
@@ -26,7 +24,6 @@ public class CartItem {
         return restaurantId;
     }
 
-    // Setters (optional)
     public void setMenuItem(MenuItem menuItem) {
         this.menuItem = menuItem;
     }

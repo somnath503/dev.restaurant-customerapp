@@ -1,7 +1,4 @@
-// --- app\src\main\java\com\somnath\customer_app\models\SliderImage.java ---
 package com.somnath.customer_app.models;
-
-// SliderImage.java
 public class SliderImage {
     private int id;
     private String title;
@@ -56,5 +53,4 @@ public class SliderImage {
     public void setActionUrl(String actionUrl) {
         this.actionUrl = actionUrl;
     }
-// Getters and setters
 }

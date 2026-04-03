@@ -1,17 +1,11 @@
-// app/src/main/java/com/somnath/customer_app/models/LoginResponse.java
 package com.somnath.customer_app.models;
-
-// This class is used to structure the data received from your backend API after a login request.
-// It would typically contain user details and an API authentication token.
-
 public class LoginResponse {
     private boolean success;
     private String message;
     private User user; // The user object
     private String authToken; // The API token for authenticated requests
-    private boolean newUser; // ADDED: To indicate if the user is new to the backend system
+    private boolean newUser; //  To indicate if the user is new to the backend system
 
-    // Constructor
     public LoginResponse(boolean success, String message, User user, String authToken, boolean newUser) {
         this.success = success;
         this.message = message;

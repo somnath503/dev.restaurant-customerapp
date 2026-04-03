@@ -1,4 +1,3 @@
-// --- app\src\main\java\com\somnath\customer_app\viewmodels\MenuViewModel.java ---
 package com.somnath.customer_app.viewmodels;
 
 import android.app.Application;
@@ -110,10 +109,6 @@ public class MenuViewModel extends AndroidViewModel {
             }
         });
     }
-
-    // --- PASTE THIS ENTIRE METHOD INTO MenuViewModel.java ---
-
-    // PASTE THIS CORRECTED METHOD INTO MenuViewModel.java
     public void fetchRestaurantMenu() {
         _menuItemList.setValue(null);
         originalMenuItems.clear();
@@ -148,10 +143,8 @@ public class MenuViewModel extends AndroidViewModel {
             }
         });
     }
-
-    // NEW METHOD: Fetch bestsellers
     public void fetchBestsellers() {
-        _bestsellersList.setValue(null); // Clear previous bestsellers
+        _bestsellersList.setValue(null);
 
         Log.d(TAG, "MenuViewModel: Calling repository to fetch bestsellers.");
 
@@ -167,33 +160,25 @@ public class MenuViewModel extends AndroidViewModel {
             @Override
             public void onError(String errorMessage) {
                 Log.w(TAG, "MenuViewModel: Failed to fetch bestsellers: " + errorMessage);
-                // It's okay to have no bestsellers, don't set a global error if only this fails
                 _bestsellersList.setValue(new ArrayList<>()); // Set empty list if error
             }
 
             @Override
             public void onFailure(Throwable t) {
                 Log.e(TAG, "MenuViewModel: Get bestsellers API call failed", t);
-                // It's okay to have no bestsellers, don't set a global error if only this fails
                 _bestsellersList.setValue(new ArrayList<>()); // Set empty list if failure
             }
         });
     }
 
-    // NEW METHOD: Fetch slider images
-
     public void fetchSliderImages() {
         _sliderImages.setValue(null);
         Log.d(TAG, "MenuViewModel: Calling repository to fetch slider images.");
-
-        // Assuming your repository has a method 'getSliderImages' similar to 'getBestsellers'
         restaurantRepository.getSliderImages(new ApiResponseCallback<List<SliderImage>>() {
             @Override
             public void onSuccess(List<SliderImage> result) {
                 Log.d(TAG, "MenuViewModel: Slider images fetched successfully. Image count: " + (result != null ? result.size() : 0));
                 _sliderImages.setValue(result != null ? result : new ArrayList<>());
-
-                // This is the last fetch operation, so we can stop the main loading indicator.
                 _loading.setValue(false);
             }
 
@@ -255,13 +240,10 @@ public class MenuViewModel extends AndroidViewModel {
             return;
         }
 
-        // When "All" is clicked, show the entire menu, not just bestsellers.
         if (category == null || category.equalsIgnoreCase("All") || category.trim().isEmpty()) {
             _filteredMenuItems.setValue(originalMenuItems); // Use the full list
             return;
         }
-
-        // For any other category, filter the full list.
         String lowerCaseCategory = category.toLowerCase().trim();
         List<MenuItem> filteredList = new ArrayList<>();
         for (MenuItem item : originalMenuItems) {

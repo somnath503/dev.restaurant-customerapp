@@ -21,19 +21,15 @@ import com.bumptech.glide.request.RequestOptions;
 import jp.wasabeef.glide.transformations.CropCircleWithBorderTransformation;
 import androidx.core.content.ContextCompat;
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder> {
-
     private List<MenuItem> menuItemList;
     private OnMenuItemClickListener onMenuItemClickListener;
-
     public interface OnMenuItemClickListener {
         void onMenuItemClick(MenuItem menuItem);
     }
-
     public void setMenuItems(List<MenuItem> menuItemList) {
         this.menuItemList = menuItemList;
         notifyDataSetChanged();
     }
-
     public void setOnMenuItemClickListener(OnMenuItemClickListener listener) {
         this.onMenuItemClickListener = listener;
     }
@@ -45,8 +41,6 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
                 .inflate(R.layout.item_menu, parent, false);
         return new MenuViewHolder(view);
     }
-
-    // --- In MenuAdapter.java ---
 
     @Override
     public void onBindViewHolder(@NonNull MenuViewHolder holder, int position) {
@@ -72,10 +66,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
                     fullImageUrl = baseUrl + relativeImageUrl;
                 }
             }
-
-            // --- CODE TO APPLY THE TRANSFORMATION ---
             int borderWidth = 2; // in pixels
-            // Make sure you have a color named 'menu_item_image_border' in your colors.xml
             int borderColor = ContextCompat.getColor(holder.itemView.getContext(), R.color.menu_item_image_border);
 
             Glide.with(holder.itemView.getContext())
@@ -110,16 +101,13 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
         return menuItemList != null ? menuItemList.size() : 0;
     }
 
-    // --- In MenuAdapter.java ---
-
     static class MenuViewHolder extends RecyclerView.ViewHolder {
-        // --- CORRECTED VARIABLE DECLARATIONS ---
         ImageView itemImageView;
         TextView itemNameTextView;
         TextView itemDescriptionTextView;
         TextView itemPriceTextView;
-        TextView outOfStockTextView; // Correctly named for the "Out of Stock" label
-        Button addItemButton;        // Correctly named for the "ADD" button
+        TextView outOfStockTextView; // named for the "Out of Stock" label
+        Button addItemButton;        //  named for the "ADD" button
 
         public MenuViewHolder(@NonNull View itemView) {
             super(itemView);

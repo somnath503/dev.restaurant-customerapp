@@ -11,9 +11,7 @@ public class Address {
     private String country;
     private String apartmentNumber; // Optional
     private String deliveryInstructions; // Optional
-    // Add latitude/longitude if storing location coordinates
 
-    // Constructor
     public Address(String id, String userId, String street, String city, String state, String zipCode, String country, String apartmentNumber, String deliveryInstructions) {
         this.id = id;
         this.userId = userId;
@@ -26,7 +24,6 @@ public class Address {
         this.deliveryInstructions = deliveryInstructions;
     }
 
-    // Getters
     public String getId() {
         return id;
     }
@@ -63,7 +60,6 @@ public class Address {
         return deliveryInstructions;
     }
 
-    // Setters (optional)
     public void setId(String id) {
         this.id = id;
     }

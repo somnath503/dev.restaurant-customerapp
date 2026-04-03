@@ -10,22 +10,17 @@ import androidx.lifecycle.ViewModelProvider; // Import ViewModelProvider
 
 import com.somnath.customer_app.R;
 import com.somnath.customer_app.viewmodels.AuthViewModel; // Import your AuthViewModel
-
 public class SplashActivity extends AppCompatActivity {
-
     private static final long SPLASH_DELAY = 2000;
     private AuthViewModel authViewModel;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash); // Set your layout
+        setContentView(R.layout.activity_splash);
 
-        // Initialize the ViewModel to check the login state
+        // the ViewModel to check the login state
         authViewModel = new ViewModelProvider(this).get(AuthViewModel.class);
-
         new Handler().postDelayed(() -> {
-            // THIS LINE IS CORRECT. The error is in the ViewModel, not here.
             if (authViewModel.isLoggedIn()) {
                 startActivity(new Intent(SplashActivity.this, MenuActivity.class));
             } else {
@@ -34,11 +29,6 @@ public class SplashActivity extends AppCompatActivity {
             finish();
         }, SPLASH_DELAY);
     }
-
-    /**
-     * Navigates to the MenuActivity and clears the back stack so the user
-     * cannot press "back" to get to the splash screen.
-     */
     private void navigateToMenuActivity() {
         Intent intent = new Intent(SplashActivity.this, MenuActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

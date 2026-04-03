@@ -1,4 +1,3 @@
-// --- app/src/main/java/com/somnath/customer_app/adapters/OrderAdapter.java ---
 package com.somnath.customer_app.adapters;
 
 import android.content.Context;

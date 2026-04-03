@@ -12,20 +12,16 @@ import java.util.List;
 import java.util.Locale;
 
 public class OrderDetailItemAdapter extends RecyclerView.Adapter<OrderDetailItemAdapter.ViewHolder> {
-
     private final List<OrderItem> items;
-
     public OrderDetailItemAdapter(List<OrderItem> items) {
         this.items = items;
     }
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_order_detail, parent, false);
         return new ViewHolder(view);
     }
-
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         OrderItem item = items.get(position);

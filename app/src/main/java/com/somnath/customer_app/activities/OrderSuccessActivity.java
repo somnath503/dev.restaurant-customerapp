@@ -21,8 +21,6 @@ public class OrderSuccessActivity extends AppCompatActivity {
 
         TextView tvOrderId = findViewById(R.id.tv_success_order_id);
         Button btnDone = findViewById(R.id.btn_success_done);
-
-        // Get order ID from intent
         String orderId = getIntent().getStringExtra(EXTRA_ORDER_ID);
         if (orderId != null) {
             tvOrderId.setText("Order ID: #" + orderId);
@@ -31,14 +29,12 @@ public class OrderSuccessActivity extends AppCompatActivity {
         }
 
         btnDone.setOnClickListener(v -> {
-            // Navigate back to the main menu (e.g., MenuActivity)
             navigateToMenuActivity();
         });
 
         getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
-                // Intercept the back press and redirect to MenuActivity
                 navigateToMenuActivity();
             }
         });

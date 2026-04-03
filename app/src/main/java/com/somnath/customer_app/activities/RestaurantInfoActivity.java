@@ -9,9 +9,7 @@ import com.somnath.customer_app.R;
 import com.somnath.customer_app.config.ApiConfig;
 import com.somnath.customer_app.databinding.ActivityRestaurantInfoBinding;
 import com.somnath.customer_app.models.Restaurant;
-
 public class RestaurantInfoActivity extends AppCompatActivity {
-
     public static final String EXTRA_RESTAURANT_INFO = "RESTAURANT_INFO_EXTRA";
     private Restaurant restaurant;
     private ActivityRestaurantInfoBinding binding;
@@ -43,13 +41,11 @@ public class RestaurantInfoActivity extends AppCompatActivity {
         setupToolbar();
         populateUI();
     }
-
     private void setupToolbar() {
         // FIXED: Don't use setSupportActionBar
         // CollapsingToolbar handles the title
         binding.toolbarInfo.setNavigationOnClickListener(v -> onBackPressed());
     }
-
 
     private void populateUI() {
         binding.collapsingToolbarInfo.setTitle(restaurant.getName());
@@ -66,7 +62,6 @@ public class RestaurantInfoActivity extends AppCompatActivity {
                 .error(R.drawable.error_restaurant)
                 .into(binding.ivRestaurantImage);
     }
-
     private String buildFullImageUrl(String relativeUrl) {
         if (relativeUrl == null || relativeUrl.isEmpty() || relativeUrl.startsWith("http")) {
             return relativeUrl;

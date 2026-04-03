@@ -1,4 +1,3 @@
-// app/src/main/java/com/somnath/customer_app/utils/SharedPrefManager.java
 package com.somnath.customer_app.utils;
 
 import android.content.Context;
@@ -15,11 +14,8 @@ public class SharedPrefManager {
     private static SharedPrefManager instance;
     private final SharedPreferences sharedPreferences;
     private final SharedPreferences.Editor editor;
-    // The static 'mCtx' was the source of the crash and is not needed.
-    // private static Context mCtx;
 
     private SharedPrefManager(Context context) {
-        // Using getApplicationContext() is a good practice to prevent memory leaks
         sharedPreferences = context.getApplicationContext().getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
     }
@@ -40,18 +36,11 @@ public class SharedPrefManager {
     public String getAuthToken() {
         return sharedPreferences.getString(KEY_AUTH_TOKEN, null);
     }
-
-    // --- THIS IS THE FIX ---
-    // This method no longer creates new SharedPreferences and Editor instances.
-    // Instead, it uses the 'editor' instance variable that was correctly
-    // initialized in the constructor, which resolves the NullPointerException.
     public void saveUserId(String userId) {
         editor.putString(KEY_USER_ID, userId);
         editor.apply();
         Log.d(TAG, "User ID saved successfully: " + userId);
     }
-    // --- END OF FIX ---
-
     public String getUserId() {
         return sharedPreferences.getString(KEY_USER_ID, null);
     }

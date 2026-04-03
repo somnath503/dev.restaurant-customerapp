@@ -1,4 +1,3 @@
-// app/src/main/java/com/somnath/customer_app/models/Order.java
 package com.somnath.customer_app.models;
 
 import java.math.BigDecimal;
@@ -8,15 +7,15 @@ import java.util.List;
 
 public class Order {
     private Long id;
-    private Long customerId; // Changed from userId for consistency
+    private Long customerId;
     private List<OrderItem> items;
     private String deliveryAddress;
-    private String totalAmount; // Use String to handle BigDecimal from backend
-    private String status; // Keep as String but validate against known statuses
-    private LocalDateTime orderDate; // Renamed from orderTime for clarity
+    private String totalAmount;
+    private String status;
+    private LocalDateTime orderDate;
     private String paymentMethod;
     private String paymentStatus;
-    private Long deliveryPersonId; // Add if needed
+    private Long deliveryPersonId;
     private String subtotal;
     private String deliveryFee;
 
@@ -25,7 +24,6 @@ public class Order {
 
     public Order() {
     }
-
 
     public Order(Long id, Long customerId, List<OrderItem> items, String deliveryAddress, String totalAmount, String status, LocalDateTime orderDate, String paymentMethod, String paymentStatus, Long deliveryPersonId, String subtotal, String deliveryFee, Double latitude, Double longitude) {
         this.id = id;

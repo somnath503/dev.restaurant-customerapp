@@ -15,26 +15,17 @@ public class CheckoutActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkout);
-
-        // Initialize button
         btnProceedToPayment = findViewById(R.id.btn_proceed_to_payment);
-
-        // Setup toolbar - Check if it exists first
+        // Setup toolbar also check it exist first
         setupToolbar();
-
-        // Button click listener - UPDATED HERE
         btnProceedToPayment.setOnClickListener(v -> {
-            // Add finish() to remove CheckoutActivity from back stack
             startActivity(new Intent(CheckoutActivity.this, PaymentActivity.class));
-            finish();  // ← ADD THIS LINE - Closes CheckoutActivity after navigation
+            finish();
         });
     }
 
     private void setupToolbar() {
-        // Try to find toolbar - may not exist in layout
         Toolbar toolbar = findViewById(R.id.toolbar);
-
-        // Only setup if toolbar exists
         if (toolbar != null) {
             toolbar.setTitle("Checkout");
             toolbar.setNavigationOnClickListener(v -> onBackPressed());

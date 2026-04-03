@@ -51,9 +51,7 @@ import com.somnath.customer_app.viewmodels.AuthViewModel;
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
-
 public class RegistrationActivity extends AppCompatActivity {
-
     private static final String TAG = "RegistrationActivity";
     private static final int LOCATION_PERMISSION_CODE = 1001;
     private static final String COUNTRY_CODE = "+91";
@@ -119,9 +117,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private void setupPrivacyPolicyLink() {
         String fullText = "I agree to the Privacy Policy";
         String linkText = "Privacy Policy";
-
         SpannableString spannableString = new SpannableString(fullText);
-
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(@NonNull View widget) {
@@ -130,7 +126,6 @@ public class RegistrationActivity extends AppCompatActivity {
                 intent.setData(Uri.parse(url));
                 startActivity(intent);
             }
-
             @Override
             public void updateDrawState(@NonNull TextPaint ds) {
                 super.updateDrawState(ds);
@@ -144,11 +139,9 @@ public class RegistrationActivity extends AppCompatActivity {
         int endIndex = startIndex + linkText.length();
 
         spannableString.setSpan(clickableSpan, startIndex, endIndex, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE);
-
         cbPrivacyPolicy.setText(spannableString);
         cbPrivacyPolicy.setMovementMethod(LinkMovementMethod.getInstance());
     }
-
     private void setupPhoneNumberInput() {
         String currentText = etPhoneNumber.getText().toString().trim();
         if (!currentText.startsWith(COUNTRY_CODE)) {
@@ -167,7 +160,6 @@ public class RegistrationActivity extends AppCompatActivity {
             }
         });
     }
-
     private void setupListeners() {
         btnSendOtp.setOnClickListener(v -> requestOtpFromBackend());
         btnVerifyOtp.setOnClickListener(v -> verifyOtpWithBackend());
@@ -182,7 +174,6 @@ public class RegistrationActivity extends AppCompatActivity {
             }
         });
     }
-
     private void handleLocationButtonClick() {
         if (!isLocationEnabled()) {
             Snackbar.make(coordinatorLayout, "Location is required for accurate address detection.", Snackbar.LENGTH_INDEFINITE)
@@ -195,12 +186,10 @@ public class RegistrationActivity extends AppCompatActivity {
             requestLocationPermission();
         }
     }
-
     private boolean isLocationEnabled() {
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
     }
-
     private void requestOtpFromBackend() {
         String phone = etPhoneNumber.getText().toString().trim().replaceAll("[\\s\\-]", "");
         if (!phone.startsWith(COUNTRY_CODE) && phone.length() == 10) {
@@ -216,7 +205,6 @@ public class RegistrationActivity extends AppCompatActivity {
         new Handler(Looper.getMainLooper()).postDelayed(() -> btnSendOtp.setEnabled(true), 30000);
         authViewModel.requestOtpFromBackend(phone);
     }
-
     private void verifyOtpWithBackend() {
         String otp = etOtp.getText().toString().trim();
         if (!isValidOtp(otp)) {
@@ -226,18 +214,15 @@ public class RegistrationActivity extends AppCompatActivity {
         showProgressBar(true);
         authViewModel.verifyOtpWithBackend(verifiedPhoneNumber, otp);
     }
-
     private boolean isValidOtp(String otp) {
         return otp != null && otp.matches("\\d{6}");
     }
-
     private void resendOtp() {
         tvResendOtp.setEnabled(false);
         new Handler(Looper.getMainLooper()).postDelayed(() -> tvResendOtp.setEnabled(true), 30000);
         authViewModel.requestOtpFromBackend(verifiedPhoneNumber);
         displayMessage("Resending OTP...", false);
     }
-
     private void submitRegistrationDetails() {
         String name = etName.getText().toString().trim();
         String address = etAddress.getText().toString().trim();
@@ -253,7 +238,6 @@ public class RegistrationActivity extends AppCompatActivity {
         }
         authViewModel.registerUserOnBackend(verifiedPhoneNumber, name, "", address, currentLat, currentLon);
     }
-
     private void observeViewModel() {
         authViewModel.getLoading().observe(this, this::showProgressBar);
         authViewModel.getError().observe(this, error -> {
@@ -356,7 +340,6 @@ public class RegistrationActivity extends AppCompatActivity {
             showProgressBar(false);
         }
     }
-
     private void showProgressBar(boolean isVisible) {
         progressBar.setVisibility(isVisible ? View.VISIBLE : View.GONE);
     }

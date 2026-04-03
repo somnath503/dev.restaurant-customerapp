@@ -1,16 +1,10 @@
-// app/src/main/java/com/somnath/customer_app/models/RegisterRequest.java
 package com.somnath.customer_app.models;
-
-// This class is used to structure the data sent to your backend API for user registration.
-// After successful Firebase Phone Auth, you might send the phone number and Firebase User ID,
-// plus other registration details collected in your UI (like name, email, address).
-
 public class RegisterRequest {
     private String phoneNumber;
     private String firebaseUid;
-    private String name; // Assuming you collect name during registration
-    private String email; // Assuming you collect email during registration
-    private String address; // ADDED: Field for user's address
+    private String name;
+    private String email;
+    private String address;
     private Double latitude;
     private Double longitude;
 
@@ -24,7 +18,6 @@ public class RegisterRequest {
         this.latitude = latitude;
         this.longitude = longitude;
     }
-
 
     public Double getLatitude() {
         return latitude;
@@ -41,8 +34,6 @@ public class RegisterRequest {
     public void setLongitude(Double longitude) {
         this.longitude = longitude;
     }
-
-    // Getters
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -63,7 +54,6 @@ public class RegisterRequest {
         return address;
     }
 
-    // Setters (optional)
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }

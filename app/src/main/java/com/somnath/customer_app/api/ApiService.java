@@ -71,7 +71,7 @@ public interface ApiService {
             @Body CreateOrderRequest request
     );
 
-    @PUT("api/admin/orders/{orderId}/cancel") // Note: The backend endpoint is in OrderController, but the path is correct
+    @PUT("api/admin/orders/{orderId}/cancel") // Note: The backend endpoint is in OrderController
     Call<Order> cancelOrder(
             @Header("Authorization") String authToken,
             @Path("orderId") Long orderId

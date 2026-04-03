@@ -25,13 +25,9 @@ import com.somnath.customer_app.utils.ValidationUtils;
 import com.somnath.customer_app.viewmodels.AuthViewModel;
 
 public class LoginActivity extends AppCompatActivity {
-
     private static final String TAG = "LoginActivity";
     private static final String COUNTRY_CODE = "+91";
-
     private AuthViewModel authViewModel;
-
-    // UI elements
     private TextView tvAppName, tvMessage, tvGoToRegister, tvResendOtp;
     private EditText etPhoneNumber, etOtp;
     private Button btnSendOtp, btnVerifyOtp;
@@ -129,7 +125,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private boolean isValidOtp(String otp) {
-        return otp != null && otp.matches("\\d{6}");  // Exactly 6 digits
+        return otp != null && otp.matches("\\d{6}");
     }
 
     private void resendOtp() {

@@ -1,6 +1,5 @@
 package com.somnath.customer_app.utils;
 
-// Basic utility class for data validation
 public class ValidationUtils {
 
     // Example: Basic email validation

@@ -36,7 +36,6 @@ public class RetrofitClient {
                     .writeTimeout(30, TimeUnit.SECONDS)
                     .build();
 
-            // --- CRITICAL FIX: Configure Gson for LocalDateTime ---
             Gson gson = new GsonBuilder()
                     .registerTypeAdapter(LocalDateTime.class, (JsonSerializer<LocalDateTime>) (src, typeOfSrc, context) ->
                             new JsonPrimitive(src.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME))) // Serialize to ISO string
@@ -50,8 +49,6 @@ public class RetrofitClient {
                         }
                     })
                     .create();
-            // --- End Gson Configuration ---
-
             retrofit = new Retrofit.Builder()
                     .baseUrl(ApiConfig.BASE_URL)
                     .client(okHttpClient)

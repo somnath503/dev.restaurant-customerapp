@@ -38,9 +38,6 @@ public class MenuItem implements Parcelable {
         this.isBestseller = isBestseller;
     }
 
-
-    // --- Parcelable Implementation ---
-
     /**
      * This special constructor is used to re-create the object from a Parcel.
      * The order of reading data MUST EXACTLY match the order of writing data in writeToParcel().
@@ -80,10 +77,6 @@ public class MenuItem implements Parcelable {
         return 0;
     }
 
-    /**
-     * This method flattens the object into a Parcel.
-     * The order of writing data MUST EXACTLY match the order of reading data in the constructor.
-     */
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         if (id == null) {
@@ -100,9 +93,6 @@ public class MenuItem implements Parcelable {
         dest.writeByte((byte) (available ? 1 : 0));    // Writing the 'available' boolean
         dest.writeByte((byte) (isBestseller ? 1 : 0)); // Writing the 'isBestseller' boolean
     }
-
-
-    // --- Getters and Setters ---
 
     public Long getId() {
         return id;
@@ -160,12 +150,6 @@ public class MenuItem implements Parcelable {
         this.available = available;
     }
 
-    /**
-     * Getter for the isBestseller field, as requested.
-     * Note: The standard Java convention is isBestseller(), but getIsBestseller() also works.
-     *
-     * @return boolean value of isBestseller
-     */
     public boolean getIsBestseller() {
         return isBestseller;
     }

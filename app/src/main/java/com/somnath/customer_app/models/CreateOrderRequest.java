@@ -7,7 +7,6 @@ import com.google.gson.annotations.SerializedName;
  * Example: {"amount": 123.45}
  */
 public class CreateOrderRequest {
-
     @SerializedName("amount")
     private double amount;
 

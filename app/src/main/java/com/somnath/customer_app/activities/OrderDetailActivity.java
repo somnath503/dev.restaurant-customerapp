@@ -20,7 +20,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 public class OrderDetailActivity extends AppCompatActivity {
-
     private TextView tvOrderDateTime, tvTotalAmount;
     private RecyclerView rvOrderItems;
     private Button btnSeeInMenu;
@@ -30,18 +29,13 @@ public class OrderDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_detail);
-
         // Initialize views
         toolbar = findViewById(R.id.toolbar);
         tvOrderDateTime = findViewById(R.id.tv_detail_order_date_time);
         tvTotalAmount = findViewById(R.id.tv_detail_total_amount);
         rvOrderItems = findViewById(R.id.rv_order_items);
         btnSeeInMenu = findViewById(R.id.btn_see_in_menu);
-
-        // Setup toolbar - FIXED: Don't use setSupportActionBar
         setupToolbar();
-
-        // Get the Order object from the Intent
         String orderJson = getIntent().getStringExtra("ORDER_DETAILS_JSON");
         if (orderJson != null) {
             Gson gson = new Gson();
@@ -49,8 +43,6 @@ public class OrderDetailActivity extends AppCompatActivity {
             Order order = gson.fromJson(orderJson, orderType);
             populateOrderDetails(order);
         }
-
-        // Set button click listener
         btnSeeInMenu.setOnClickListener(v -> {
             Intent intent = new Intent(OrderDetailActivity.this, MenuActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -59,7 +51,7 @@ public class OrderDetailActivity extends AppCompatActivity {
         });
     }
 
-    // FIXED: New setupToolbar method - no setSupportActionBar
+    // setupToolbar method , no setSupportActionBar
     private void setupToolbar() {
         toolbar.setTitle("Your Order Details");
         toolbar.setNavigationOnClickListener(v -> onBackPressed());
@@ -75,7 +67,7 @@ public class OrderDetailActivity extends AppCompatActivity {
         }
         tvTotalAmount.setText(String.format(Locale.getDefault(), "Total Paid: ₹%s", order.getTotalAmount()));
 
-        // Setup RecyclerView for the list of items
+        // RecyclerView for the list of items
         rvOrderItems.setLayoutManager(new LinearLayoutManager(this));
         OrderDetailItemAdapter adapter = new OrderDetailItemAdapter(order.getItems());
         rvOrderItems.setAdapter(adapter);

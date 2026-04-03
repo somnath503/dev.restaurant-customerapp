@@ -27,14 +27,11 @@ import com.somnath.customer_app.viewmodels.CartViewModel;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Objects;
-
-// --- THIS IS THE FIX: The class now correctly implements the listener interface ---
 public class MenuItemDetailActivity extends AppCompatActivity implements MenuAdapter.OnMenuItemClickListener {
 
     public static final String EXTRA_MENU_ITEM = "MENU_ITEM_EXTRA";
     public static final String EXTRA_RESTAURANT_ID = "RESTAURANT_ID_EXTRA";
     public static final String EXTRA_RELATED_ITEMS = "RELATED_ITEMS_EXTRA";
-
     // ViewModels and Data
     private CartViewModel cartViewModel;
     private MenuItem currentMenuItem;
@@ -145,7 +142,6 @@ public class MenuItemDetailActivity extends AppCompatActivity implements MenuAda
         });
     }
     private void setupToolbar() {
-        // FIXED: Don't use setSupportActionBar
         // Menu item name will be set from data
         toolbar.setTitle("Menu Item Details");
         toolbar.setNavigationOnClickListener(v -> onBackPressed());
@@ -205,8 +201,6 @@ public class MenuItemDetailActivity extends AppCompatActivity implements MenuAda
 
     @Override
     public void onMenuItemClick(MenuItem menuItem) {
-        // This method is now correctly overriding the interface method.
-        // It handles clicks on the "ADD" button for items in the related items list.
         cartViewModel.addItemToCart(menuItem, 1, restaurantId);
         Toast.makeText(this, "Added " + menuItem.getName() + " to cart", Toast.LENGTH_SHORT).show();
     }

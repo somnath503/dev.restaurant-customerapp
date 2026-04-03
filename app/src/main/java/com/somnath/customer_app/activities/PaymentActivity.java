@@ -98,15 +98,12 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultW
 
         orderViewModel.getPlacedOrder().observe(this, order -> {
             if (order != null) {
-                // Toast.makeText(this, "Order placed successfully! Order ID: #" + order.getId(), Toast.LENGTH_LONG).show(); // REMOVE or COMMENT OUT this line
                 cartViewModel.clearCart(); // Clear cart after successful order
-
-                // Redirect to OrderSuccessActivity
                 Intent intent = new Intent(this, OrderSuccessActivity.class);
                 intent.putExtra(OrderSuccessActivity.EXTRA_ORDER_ID, String.valueOf(order.getId())); // Pass order ID
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
-                finish(); // Finish PaymentActivity so user can't go back
+                finish();
             }
         });
 
@@ -161,14 +158,8 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultW
             Toast.makeText(this, "Delivery address not found.", Toast.LENGTH_LONG).show();
             return;
         }
-
-        // --- THIS IS THE MISSING PART ---
-        // Here, we check which RadioButton is selected.
         boolean isCodSelected = rbCod.isChecked();
         boolean isUpiSelected = rgUpiOptions.getCheckedRadioButtonId() != -1;
-        // 'isUpiSelected' becomes true if any option in the UPI RadioGroup is checked.
-        // --- END OF MISSING PART ---
-
         // Ensure a payment method is chosen
         if (!isCodSelected && !isUpiSelected) {
             Toast.makeText(this, "Please select a payment method.", Toast.LENGTH_SHORT).show();
@@ -185,7 +176,7 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultW
             // Otherwise, it must be COD. Place the order directly.
             orderViewModel.placeOrder(
                     currentCartItems,
-                    currentUserProfile, // Correct: Pass the entire User object
+                    currentUserProfile,
                     DELIVERY_FEE,
                     totalAmount,
                     "COD"

@@ -36,7 +36,6 @@ public class CartActivity extends AppCompatActivity {
     }
 
     private void setupToolbar() {
-        // FIXED: Don't call setSupportActionBar - just configure toolbar directly
         binding.toolbarCart.setTitle("Your Cart");
         binding.toolbarCart.setNavigationOnClickListener(v -> onBackPressed());
     }
@@ -68,7 +67,7 @@ public class CartActivity extends AppCompatActivity {
                 Toast.makeText(CartActivity.this, "Cart is empty", Toast.LENGTH_SHORT).show();
                 return;
             }
-            // CHANGE: Navigate directly to PaymentActivity (skip CheckoutActivity)
+            // Navigate directly to PaymentActivity (skip CheckoutActivity)
             Intent intent = new Intent(CartActivity.this, PaymentActivity.class);
             startActivity(intent);
         });

@@ -1,4 +1,3 @@
-// --- app\\src\\main\\java\\com\\somnath\\customer_app\\viewmodels\\OrderViewModel.java ---
 package com.somnath.customer_app.viewmodels;
 import android.app.Application;
 import android.util.Log;
@@ -32,8 +31,6 @@ public class OrderViewModel extends AndroidViewModel {
     private static final String TAG = "OrderViewModel";
 
     private final OrderRepository orderRepository;
-
-    // LiveData for loading state, exposed publicly as immutable LiveData.
     private final MutableLiveData<Boolean> _loading = new MutableLiveData<>(false);
     public LiveData<Boolean> getLoading() { return _loading; }
 
@@ -214,12 +211,7 @@ public class OrderViewModel extends AndroidViewModel {
         });
     }
 
-    /**
-     * --- NEW METHOD ---
-     * Sends a request to cancel a specific order.
-     * This assumes the backend has an endpoint to handle this action.
-     * @param orderId The ID of the order to be canceled.
-     */
+
     public void cancelOrder(Long orderId) {
         _loading.setValue(true);
         _error.setValue(null);

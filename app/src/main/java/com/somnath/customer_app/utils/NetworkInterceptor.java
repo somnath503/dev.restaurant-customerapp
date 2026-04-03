@@ -1,6 +1,4 @@
-// app/src/main/java/com/somnath/customer_app/utils/NetworkInterceptor.java
 package com.somnath.customer_app.utils;
-
 import android.util.Log;
 
 import okhttp3.Interceptor;
@@ -8,15 +6,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 import java.io.IOException;
-
-// This interceptor can be used to add headers like Authentication tokens
-public class NetworkInterceptor implements Interceptor {
-
-    // You would typically inject or get your auth token here,
-    // e.g., from SharedPrefManager
-    private String authToken = null; // Placeholder
-
-    // You might need a way to update the token, e.g., after login
+public class NetworkInterceptor implements Interceptor { private String authToken = null; // Placeholder
     public void setAuthToken(String token) {
         this.authToken = token;
     }

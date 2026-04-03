@@ -13,21 +13,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder> {
-
-    private List<CartItem> cartItemList = new ArrayList<>();
+public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder> {    private List<CartItem> cartItemList = new ArrayList<>();
     private OnCartItemChangeListener listener;
-
     public interface OnCartItemChangeListener {
         void onQuantityChanged(CartItem item, int newQuantity);
         void onRemoveItem(CartItem item);
     }
-
     public void setCartItems(List<CartItem> cartItemList) {
         this.cartItemList = cartItemList;
         notifyDataSetChanged();
     }
-
     public void setOnCartItemChangeListener(OnCartItemChangeListener listener) {
         this.listener = listener;
     }
@@ -35,31 +30,24 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     @NonNull
     @Override
     public CartViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // --- NEW: Inflate using ViewBinding ---
         ItemCartBinding binding = ItemCartBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
         return new CartViewHolder(binding);
     }
-
     @Override
     public void onBindViewHolder(@NonNull CartViewHolder holder, int position) {
         CartItem cartItem = cartItemList.get(position);
         holder.bind(cartItem, listener);
     }
-
     @Override
     public int getItemCount() {
         return cartItemList != null ? cartItemList.size() : 0;
     }
-
-    // --- UPDATED: ViewHolder now uses ViewBinding ---
     static class CartViewHolder extends RecyclerView.ViewHolder {
         private final ItemCartBinding binding;
-
         public CartViewHolder(ItemCartBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
-
         public void bind(final CartItem cartItem, final OnCartItemChangeListener listener) {
             binding.tvCartItemName.setText(cartItem.getMenuItem().getName());
             binding.tvCartItemQuantity.setText(String.valueOf(cartItem.getQuantity()));
@@ -71,7 +59,6 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                     .placeholder(R.drawable.placeholder_menu_item)
                     .into(binding.ivCartItemImage);
 
-            // --- NEW: Set click listeners for interactive controls ---
             binding.ivIncreaseQuantity.setOnClickListener(v -> {
                 if (listener != null) {
                     listener.onQuantityChanged(cartItem, cartItem.getQuantity() + 1);

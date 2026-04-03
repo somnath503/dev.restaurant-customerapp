@@ -1,4 +1,3 @@
-// --- app\src\main\java\com\somnath\customer_app\models\User.java ---
 package com.somnath.customer_app.models;
 
 import com.somnath.customer_app.models.CustomerStatus;
@@ -17,10 +16,7 @@ public class User {
     private Double latitude;
     private Double longitude;
 
-    // Default constructor for Gson to use
     public User() {}
-
-    // Optional: Constructor with all fields if you explicitly create User objects
     public User(Long id, String phone, String name, String email, String address,
                 CustomerStatus status, String firebaseUid,
                 String role,String backupPhoneNumber,Double latitude, Double longitude) {

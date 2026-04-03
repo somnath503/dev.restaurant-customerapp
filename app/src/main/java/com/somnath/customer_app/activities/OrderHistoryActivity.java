@@ -71,8 +71,6 @@ public class OrderHistoryActivity extends AppCompatActivity {
 
     private void setupToolbar() {
         MaterialToolbar toolbar = findViewById(R.id.toolbar_order_history);
-
-        // FIXED: Don't use setSupportActionBar - set directly on toolbar
         toolbar.setTitle("Order History");
         toolbar.setNavigationOnClickListener(v -> onBackPressed());
     }
